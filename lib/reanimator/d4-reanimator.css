@@ -1,0 +1,16 @@
+.animation-element {
+  	transition: all 1s ease-in-out;
+}
+.fadein {
+  	opacity: 0;
+}
+.fadein.in-view {
+  	opacity: 1;
+}
+.slideup {
+	position: relative;
+  	top: 30px;
+}
+.slideup.in-view {
+  top: 0px;
+}
