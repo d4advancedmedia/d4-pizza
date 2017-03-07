@@ -1,8 +1,8 @@
 <?php
 /*
 	Plugin Name: D4 Pizza
-	Plugin URI: https://github.com/d4advancedmedia/
-	GitHub Theme URI: https://github.com/d4advancedmedia/
+	Plugin URI: https://github.com/d4advancedmedia/d4-pizza
+	GitHub Theme URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Branch: master
 	Description: Every site needs extra cheese, robust sauce, toppings, and choice of dipping sauce.
 	Version: 7Mar17b
