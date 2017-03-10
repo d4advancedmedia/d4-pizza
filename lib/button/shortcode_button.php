@@ -2,7 +2,7 @@
 /*
   Shortcode Name: d4button
   Usage: [d4button link="" text=""]
-  Version: 7Mar17
+  Version: 1.0.0
   Author: D4 Adv. Media
   License: GPL2
 */

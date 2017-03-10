@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 7Mar17
+  Version: 1.0.0
   Author: D4 Adv. Media
   License: GPL2
 */
