@@ -1,0 +1,198 @@
+.d4-slidemenu #content, .d4-slidemenu #footer {
+  position: relative;
+  right: 0;
+  transition: 0.5s all ease-in-out;
+  -moz-transition: 0.5s all ease-in-out;
+  -o-transition: 0.5s all ease-in-out;
+  -webkit-transition: 0.5s all ease-in-out;
+}
+.d4-slidemenu.mobile-expand #content, .d4-slidemenu.mobile-expand #footer {
+  right: 260px;
+}
+.d4-slidemenu #mobile-toggle, .d4-slidemenu #mobile-nav {
+  display: none !important;
+}
+.d4-slidemenu #d4slidemenu-toggle {
+  background: transparent none repeat scroll 0 0;
+  border-radius: 0;
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  float: none;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 70px;
+  z-index: 99;
+  outline: none !important;
+  display: none;
+  -webkit-user-modify: read-write-plaintext-only;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); 
+  -webkit-tap-highlight-color: transparent;  /* i.e. Nexus5/Chrome and Kindle Fire HD 7 */
+}
+.d4-slidemenu #d4slidemenu {
+  background: #222 none repeat scroll 0 0;
+  bottom: 0;
+  margin: 0;
+  position: fixed;
+  right: -260px;
+  top: 0;
+  width: 260px;
+  overflow-y: scroll;
+  transition: 0.5s all ease-in-out;
+  -moz-transition: 0.5s all ease-in-out;
+  -o-transition: 0.5s all ease-in-out;
+  -webkit-transition: 0.5s all ease-in-out;
+}
+.d4-slidemenu.admin-bar #d4slidemenu {
+  padding-top: 140px;
+}
+.d4-slidemenu.mobile-expand #d4slidemenu {
+  right: 0;
+}
+.d4-slidemenu #d4slidemenu a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.d4-slidemenu .sub-menu-expanded {
+  background: rgba(255, 255, 255, 0.05) none repeat scroll 0 0;
+}
+.d4-slidemenu #d4slidemenu .menu-item-has-children a {
+  pointer-events: none;
+}
+.d4-slidemenu #d4slidemenu .menu-item-has-children.sub-menu-expanded a {
+  pointer-events: auto;
+}
+.d4-slidemenu #d4slidemenu ul {
+  padding: 0 10px;
+}
+.d4-slidemenu #d4slidemenu li {
+  cursor: pointer;
+  list-style: outside none none;
+  position: relative;
+}
+.d4-slidemenu #d4slidemenu li i {
+  color: #666;
+  cursor: pointer;
+  left: 0;
+  padding: 16px 16px 15px;
+  position: absolute;
+  top: 0;
+}
+.d4-slidemenu #d4slidemenu li:last-child a {
+  border: 0 none;
+}
+.d4-slidemenu #mobile-overlay {
+  bottom: 0;
+  display: none;
+  left: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.d4-slidemenu.mobile-expand #mobile-overlay {
+  display: block;
+  left: 0;
+}
+
+/* ----------------- Responsive ------------------- */
+
+@media all and (min-width: 1001px)  {.d4-slidemenu #d4slidemenu,.d4-slidemenu #d4slidemenu-toggle {display:none !important;}}
+@media all and (max-width: 1000px)  {
+
+.d4-slidemenu #main-menu {
+  display: none;
+}
+.d4-slidemenu #d4slidemenu,#d4slidemenu-toggle {
+  display: block !important;
+}
+.d4-slidemenu #header {
+  background: #151515 none repeat scroll 0 0;
+  left: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: all 0.5s ease-in-out 0s;
+  z-index: 999;
+  height: 70px;
+}
+.admin-bar.d4-slidemenu #header {
+  top: 32px;
+}
+.d4-slidemenu #header .page-wrapper {
+  padding: 0;
+  width: 100%;
+}
+.d4-slidemenu #logo {
+  display: block;
+  float: none;
+  margin: 0 auto;
+  max-width: 30%;
+  min-width: 150px;
+  position: relative;
+  z-index: 99;
+  height: 70px;
+  padding-top: 10px;
+  text-align: center;
+}
+.d4-slidemenu #logo img {
+  height: 50px;
+  width: auto;
+}
+.d4-slidemenu #d4slidemenu {
+  padding-top: 80px;
+}
+.d4-slidemenu #content {
+  margin-top: 70px;
+}
+}
+@media all and (max-width: 782px)  {
+.admin-bar.d4-slidemenu #header {
+  top: 46px;
+}  
+}
+@media all and (max-width: 480px)  {
+html #wpadminbar {
+  position: fixed;
+}
+.d4-slidemenu #header {
+  height: 50px;
+}
+.d4-slidemenu #header .page-wrapper {
+  padding: 0;
+}
+.d4-slidemenu #logo {
+  height: 50px;
+  max-width: 50%;
+  padding-top: 5px;
+  text-align: center;
+}
+.d4-slidemenu #logo img {
+  height: 40px;
+  width: auto;
+}
+.d4-slidemenu #content {
+  margin-top: 50px;
+}
+.d4-slidemenu #d4slidemenu-toggle {
+  width: 50px;
+  font-size: 22px;
+}
+.d4-slidemenu .mobile-expand #content, .d4-slidemenu .mobile-expand #footer {
+  right: 300px;
+}
+.d4-slidemenu #d4slidemenu {
+  right: -300px;
+  width: 300px;
+  padding-top: 35px;
+} 
+}
