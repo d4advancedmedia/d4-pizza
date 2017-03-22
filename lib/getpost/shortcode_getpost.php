@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 1.0.0
+  Version: 1.0.2
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -28,6 +28,7 @@
 			'meta_fields' => '',
 			'content_order' => 'title,image,body,meta',
 			'all_link' => '',
+			'all_linktext' => '',
 			'button_text' => 'Read More',
 			'link_overlay' => true,
 		), $atts );
@@ -68,6 +69,9 @@
 		if ($attr['posttype'] != '') {
 			$posttype = $attr['posttype'];
 			$getposts_args['post_type'] = $posttype;
+
+			$posttype_obj = get_post_type_object( $posttype );
+			$posttype_name = $posttype_obj->labels->name;	
 		}
 		if ($attr['author'] == 'true') {
 			$user_ID = get_current_user_id();
@@ -76,6 +80,12 @@
 
 		if ($attr['title'] != '') {
 			$title = '<h1 class="getpost-title">'.$attr['title'].'</h1>';
+		}
+
+		if ($attr['all_linktext'] == '') {
+			$all_linktext = 'See all '.$posttype_name;
+		} else {
+			$all_linktext = $attr['all_linktext'];
 		}	 
 	
 		
@@ -86,17 +96,17 @@
 
 
 		if ($attr['all_link'] == '') {
-			$alllink = '<a class="get-all" href="/'.$posttype.'">See all '.$posttype.'</a>';
+			$alllink = '<a class="get-all button" href="/'.$posttype.'">'.$all_linktext.'</a>';
 		} elseif ($attr['all_link'] == 'none') {
 			$alllink = '';
 		}
 		else {
-			$alllink = '<a class="get-all" href="'.$attr['all_link'].'">See all '.$posttype.'</a>';
+			$alllink = '<a class="get-all" href="'.$attr['all_link'].'">'.$all_linktext.'</a>';
 		}
 
 		// Post Thumbnail
 		if ( has_post_thumbnail() ) {
-			$thumbnail = '<div class="post-thumb">' . get_the_post_thumbnail( $postid, 'large' ) . '</div>';
+			$thumbnail = '<div class="post-thumb"><span class="center-helper"></span>' . get_the_post_thumbnail( $postid, 'large' ) . '</div>';
 		}
 
 		if ($attr['use_excerpt'] != '') {
@@ -134,7 +144,7 @@
 		}
 
 		if ($attr['link_overlay'] == true) {
-			$link_overlay = '<a style="position:absolute; top:0; bottom:0; left:0; right:0;" href="'.$link_url.'"></a>';
+			$link_overlay = '<a style="position:absolute; top:0; bottom:0; left:0; right:0;z-index:99" href="'.$link_url.'"></a>';
 		} else {
 			$link_overlay = '';
 		}		

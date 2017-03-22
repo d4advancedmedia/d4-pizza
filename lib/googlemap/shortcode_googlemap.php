@@ -8,10 +8,14 @@
   License: GPL2
 */
 
-function d4shortcode_googlemap( $atts ) {
-		$attr = shortcode_atts( array(
-			'api_key'=>'',
-			'address'=>'',
+function shortcode_d4googlemap( $atts ) {
+    $attr = shortcode_atts( array(
+		  'api_key'         =>'',
+			'address'         =>'',
+      'pin_1'           =>'',
+      'pin_2'           =>'',
+      'locationtext_1'  =>'',
+      'locationtext_2'  =>'',
 		), $atts );
 
 		if ($attr['address'] != '') {
@@ -21,8 +25,29 @@ function d4shortcode_googlemap( $atts ) {
       $address_2 = do_shortcode('[socialbox key="addr2" style="text"]');
 		}
 
-    //$address_1 = get_post_meta( '19','Address' , true);
-    //$address_2 = get_post_meta( '21','Address' , true);
+    if ($attr['pin_1'] != '') {
+        $pin_1 = $attr['pin_1'];
+    } else {
+        $pin_1 = plugins_url( 'pin.png' , __FILE__ );
+    }
+
+    if ($attr['pin_2'] != '') {
+        $pin_2 = $attr['pin_2'];
+    } else {
+        $pin_2 = plugins_url( 'pin.png' , __FILE__ );
+    }
+
+    if ($attr['locationtext_1'] != '') {
+        $locationtext_1 = $attr['locationtext_1'];
+    } else {
+        $locationtext_1 = get_bloginfo( 'name', 'display' );
+    }
+
+    if ($attr['locationtext_2'] != '') {
+        $locationtext_2 = $attr['locationtext_2'];
+    } else {
+        $locationtext_2 = get_bloginfo( 'name', 'display' );
+    }
 
     $cleanaddress_1 = strip_tags($address_1);
     $cleanaddress_2 = strip_tags($address_2);
@@ -71,14 +96,14 @@ function initMap() {
         if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
 
           var infowindow = new google.maps.InfoWindow({
-            content: "<b>KAHL Office Design<br>" + address_1 + "</b><br/><a target=_blank href=https://www.google.com/maps/place/'.$link_address_1.'>Get Directions</a>",
+            content: "<b>'.$locationtext_1.'<br>" + address_1 + "</b><br/><a target=_blank href=https://www.google.com/maps/place/'.$link_address_1.'>Get Directions</a>",
             size: new google.maps.Size(150, 50)
           });
 
           var marker = new google.maps.Marker({
             position: results[0].geometry.location,
             map: map,
-            icon: "'.get_template_directory_uri().'/img/pin-retail.png",
+            icon: "'.$pin_1.'",
             title: address_1
           });
           google.maps.event.addListener(marker, "click", function() {
@@ -102,14 +127,14 @@ function initMap() {
           map.setCenter(results[0].geometry.location);
 
           var infowindow = new google.maps.InfoWindow({
-            content: "<b>KAHL Office Retail<br>" + address_2 + "</b><br/><a target=_blank href=https://www.google.com/maps/place/'.$link_address_2.'>Get Directions</a>",
+            content: "<b>'.$locationtext_2.'<br>" + address_2 + "</b><br/><a target=_blank href=https://www.google.com/maps/place/'.$link_address_2.'>Get Directions</a>",
             size: new google.maps.Size(150, 50)
           });
 
           var marker = new google.maps.Marker({
             position: results[0].geometry.location,
             map: map,
-            icon: "'.get_template_directory_uri().'/img/pin-design.png",
+            icon: "'.$pin_2.'",
             title: address_2
           });
           google.maps.event.addListener(marker, "click", function() {
@@ -132,18 +157,7 @@ function initMap() {
 		$output .= $script;
 		$output .= '<div id="map" style="cursor: pointer; height: 500px; width: 100%;"></div>';
 		return $output;
-
-
-		/*'<div class="contact-block">'.
-			'<div class="one_half contact-left">'.
-				'<div class="skivdiv-content">'.
-					'<h1>Contact</h1>'.				
-					do_shortcode('[socialbox key="addr1, phone1, email1" style="text"]').
-					$title.
-					$content.
-			'</div>'.
-		'</div>'.*/
 	}
 
-add_shortcode( 'd4googlemap', 'd4shortcode_map' );
+add_shortcode( 'd4googlemap', 'shortcode_d4googlemap' );
 ?>
