@@ -5,25 +5,37 @@
 	GitHub Plugin URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Branch: master
 	Description: Every site needs extra cheese, robust sauce, toppings, and choice of dipping sauce.
-	Version: 1.3.0
+	Version: 1.3.1
 	Author: D4 Adv. Media
-	License: GPL2
+	License: GPL3
 */
+// Automatically grabs the plugin's version number
+	function plugin_get_version() {
+		if ( ! function_exists( 'get_plugins' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		$plugin_folder = get_plugins( '/' . plugin_basename( dirname( __FILE__ ) ) );
+		$plugin_file = basename( ( __FILE__ ) );
+		return $plugin_folder[$plugin_file]['Version'];
+	} $d4pizza_version = plugin_get_version();
 
-// Update this version number in the description area as well for cache busting. Use this variable as the version number in registers for scripts and styles so that a single change to this number will force a version refresh for all D4 Pizza files. You can still version the js and css files separately, this just denotes the version of the plugin as a whole.
-$d4pizza_version = '1.3.0';
+// adds the toppings
+	function d4pizza_include_toppings() {
 
-//Plugin includes
-include ('config.php');
+		$d4toppings = apply_filters( 'd4toppings', array() );
+		set_include_path( plugin_basename(dirname( __FILE__ )) ); 
 
-global $d4pizza_config;
+		#var_dump( $d4toppings );
+		foreach ( $d4toppings as $key => $value ) {
 
-if (is_array($d4pizza_config)) {
-	foreach ($d4pizza_config as $topping => $value) {
-		if($value == true) {
-			include ('lib/'.$topping.'/'.$topping.'.php');
+			if ( $value == true ) {
+				require_once ( "lib/{$key}/{$key}.php" );
+			}
+
 		}
-	}
-}
+		#restore_include_path();
+
+	} add_action( 'init', 'd4pizza_include_toppings', 0 );
+
+
 
 ?>
