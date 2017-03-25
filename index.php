@@ -34,7 +34,7 @@
 		}
 		#restore_include_path();
 
-	} add_action( 'init', 'd4pizza_include_toppings', 0 );
+	} add_action( 'plugins_loaded', 'd4pizza_include_toppings' );
 
 
 
