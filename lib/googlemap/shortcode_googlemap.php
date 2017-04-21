@@ -55,13 +55,10 @@ function shortcode_d4googlemap( $atts ) {
     $link_address_1 = str_replace(array(" ",","),"+",$cleanaddress_1);
     $link_address_2 = str_replace(array(" ",","),"+",$cleanaddress_2);
 
-		//get the global api key set in the base theme plugin config file
-    global $d4google_apikey;
-
     if ($attr['api_key'] != '') {
 			$api_key = $attr['api_key'];
 		} else {
-      $d4google_apikey = 'AIzaSyCyYncL5imWnSmhF1PXk5NckeM4dObSZ4k';
+      $api_key = 'AIzaSyCyYncL5imWnSmhF1PXk5NckeM4dObSZ4k';
     }
 
 
