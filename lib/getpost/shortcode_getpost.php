@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 1.0.2
+  Version: 1.0.3
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -97,11 +97,14 @@
 
 		if ($attr['all_link'] == '') {
 			$alllink = '<a class="get-all button" href="/'.$posttype.'">'.$all_linktext.'</a>';
+		} elseif ( ($attr['all_link'] == 'term') || ($attr['all_link'] == 'category') ) {
+			$category_object = get_term_by( 'name', $category_name, $attr['all_link'] );
+			$alllink = '<a class="get-all button" href="'.home_url().'/'.$category_object->slug.'">'.$all_linktext.'</a>';
 		} elseif ($attr['all_link'] == 'none') {
 			$alllink = '';
 		}
 		else {
-			$alllink = '<a class="get-all" href="'.$attr['all_link'].'">'.$all_linktext.'</a>';
+			$alllink = '<a class="get-all button" href="'.$attr['all_link'].'">'.$all_linktext.'</a>';
 		}
 
 		// Post Thumbnail
