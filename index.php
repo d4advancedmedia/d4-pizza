@@ -5,7 +5,7 @@
 	GitHub Plugin URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Branch: master
 	Description: Every site needs extra cheese, robust sauce, toppings, and choice of dipping sauce.
-	Version: 2.0.0
+	Version: 2.1.0
 	Author: D4 Adv. Media
 	License: GPL3
 */

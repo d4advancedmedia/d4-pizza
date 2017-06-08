@@ -14,3 +14,24 @@
 .slideup.in-view {
   top: 0px;
 }
+.slideleft {
+  position: relative;
+  left: 50px;
+}
+.slideleft.in-view {
+  left: 0px;
+}
+.slideright {
+  position: relative;	
+  right: 50px;
+}
+.slideright.in-view {
+  right: 0px;
+}
+.flipH {
+  perspective: 1000px;
+  transform: rotateY(180deg);
+}
+.flipH.in-view {
+	transform: rotateY(0deg);
+}
