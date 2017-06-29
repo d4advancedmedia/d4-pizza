@@ -1,17 +1,24 @@
 .animation-element {
-  	transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 .fadein {
-  	opacity: 0;
+    opacity: 0;
 }
 .fadein.in-view {
-  	opacity: 1;
+    opacity: 1;
 }
 .slideup {
-	position: relative;
-  	top: 30px;
+  position: relative;
+  top: 30px;
 }
 .slideup.in-view {
+  top: 0px;
+}
+.slidedown {
+  position: relative;
+  top: -30px;
+}
+.slidedown.in-view {
   top: 0px;
 }
 .slideleft {
@@ -22,7 +29,7 @@
   left: 0px;
 }
 .slideright {
-  position: relative;	
+  position: relative; 
   right: 50px;
 }
 .slideright.in-view {
@@ -33,5 +40,5 @@
   transform: rotateY(180deg);
 }
 .flipH.in-view {
-	transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }

@@ -1,11 +1,11 @@
 <?php
 /*
-	Plugin Name: D4 Pizza
+	Plugin Name: D4 DevKit
 	Plugin URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Plugin URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Branch: master
-	Description: Every site needs extra cheese, robust sauce, toppings, and choice of dipping sauce.
-	Version: 2.1.0
+	Description: The collection of D4 developer tools
+	Version: 2.2.0
 	Author: D4 Adv. Media
 	License: GPL3
 */

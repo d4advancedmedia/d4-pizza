@@ -3,7 +3,7 @@
 /*
   Feature Name: reanimator
   Usage: Add classes to elements to create prebuilt animation effects.
-  Version: 1.1.1
+  Version: 1.2.1
   Author: D4 Adv. Media
   License: GPL2
 */

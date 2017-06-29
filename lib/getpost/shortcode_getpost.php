@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 1.0.3
+  Version: 1.1.3
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -18,6 +18,9 @@
 			'category_name'=>'',
 			'number'=>'99',
 			'tag'=>'',
+			'taxonomy'=>'',
+			'tax_field'=>'',
+			'terms'=>'',
 			'link'=>'',
 			'use_excerpt'=>'',
 			'content_length'=>'',
@@ -66,6 +69,18 @@
 			$tag = $attr['tag'];
 			$getposts_args['tag'] = $tag;
 		}
+		if ( ($attr['taxonomy'] != '') && ($attr['terms'] != '') && ($attr['tax_field'] != '') ) {
+			/*$getposts_args['tax_query'][0]['taxonomy'] = $attr['taxonomy'];
+			$getposts_args['tax_query'][0]['terms'] = $attr['terms'];*/
+
+			$getposts_args['tax_query'] = array(
+		        array(
+		            'taxonomy' => $attr['taxonomy'],
+		            'field'    => $attr['tax_field'],
+		            'terms'    => $attr['terms'],
+		        ),
+		    );
+		}
 		if ($attr['posttype'] != '') {
 			$posttype = $attr['posttype'];
 			$getposts_args['post_type'] = $posttype;
@@ -96,15 +111,15 @@
 
 
 		if ($attr['all_link'] == '') {
-			$alllink = '<a class="get-all button" href="/'.$posttype.'">'.$all_linktext.'</a>';
+			$alllink = '<div class="clearfix"></div><a class="get-all button" href="/'.$posttype.'">'.$all_linktext.'</a>';
 		} elseif ( ($attr['all_link'] == 'term') || ($attr['all_link'] == 'category') ) {
 			$category_object = get_term_by( 'name', $category_name, $attr['all_link'] );
-			$alllink = '<a class="get-all button" href="'.home_url().'/'.$category_object->slug.'">'.$all_linktext.'</a>';
+			$alllink = '<div class="clearfix"></div><a class="get-all button" href="'.home_url().'/'.$category_object->slug.'">'.$all_linktext.'</a>';
 		} elseif ($attr['all_link'] == 'none') {
 			$alllink = '';
 		}
 		else {
-			$alllink = '<a class="get-all button" href="'.$attr['all_link'].'">'.$all_linktext.'</a>';
+			$alllink = '<div class="clearfix"></div><a class="get-all button" href="'.$attr['all_link'].'">'.$all_linktext.'</a>';
 		}
 
 		// Post Thumbnail
