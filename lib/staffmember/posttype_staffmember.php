@@ -55,7 +55,8 @@ function register_d4staffmember_post_type() {
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
-		'menu_icon'				=> 'dashicons-groups'
+		'menu_icon'				=> 'dashicons-groups',
+		'rewrite'				=> $rewrite,
 	);
 	register_post_type( 'd4staffmember', $args );
 
