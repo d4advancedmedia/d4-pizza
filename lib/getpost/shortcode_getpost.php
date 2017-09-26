@@ -3,37 +3,39 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 1.1.3
+  Version: 1.4.3
   Author: D4 Adv. Media
   License: GPL2
 */
 
 	function shortcode_d4getpost( $atts ) {
 		$attr = shortcode_atts( array(
-			'postid'=>'',
-			'pageid'=>'',
-			'wrapperclass'=>'',
-			'posttype'=>'',
-			'title'=>'',
-			'category_name'=>'',
-			'number'=>'99',
-			'tag'=>'',
-			'taxonomy'=>'',
-			'tax_field'=>'',
-			'terms'=>'',
-			'link'=>'',
-			'use_excerpt'=>'',
-			'content_length'=>'',
-			'orderby'=>'date',
-			'order' => 'DESC',
-			'author' => 'false',
-			'edit_link' => '',
-			'meta_fields' => '',
-			'content_order' => 'title,image,body,meta',
-			'all_link' => '',
-			'all_linktext' => '',
-			'button_text' => 'Read More',
-			'link_overlay' => true,
+			'postid'			=>	'',
+			'pageid'			=>	'',
+			'wrapperclass'		=>	'',
+			'posttype'			=>	'',
+			'title'				=>	'',
+			'category_name'		=>	'',
+			'number'			=>	'99',
+			'tag'				=>	'',
+			'taxonomy'			=>	'',
+			'tax_field'			=>	'',
+			'terms'				=>	'',
+			'link'				=>	'',
+			'use_excerpt'		=>	'',
+			'content_length'	=>	'',
+			'orderby'			=>	'date',
+			'order' 			=> 	'DESC',
+			'author' 			=> 	'false',
+			'edit_link' 		=> 	'',
+			'meta_fields' 		=> 	'',
+			'content_order' 	=> 	'title,image,body,meta',
+			'all_link' 			=> 	'',
+			'all_linktext' 		=> 	'',
+			'button_text' 		=> 	'Read More',
+			'link_overlay' 		=> 	true,
+			'bg_img' 			=> 	false,
+			'post_parent'		=> 	'',
 		), $atts );
 
 		$getposts_args = array();
@@ -45,6 +47,9 @@
 		if ($attr['pageid'] != '') {
 			$pageid = $attr['pageid'];
 			$getposts_args['page_id'] = $pageid;
+		}
+		if ($attr['post_parent'] != '') {
+			$getposts_args['post_parent'] = $attr['post_parent'];
 		}
 		if ($attr['wrapperclass'] != '') {
 			$wrapperclass = ' '.$attr['wrapperclass'];
@@ -70,8 +75,6 @@
 			$getposts_args['tag'] = $tag;
 		}
 		if ( ($attr['taxonomy'] != '') && ($attr['terms'] != '') && ($attr['tax_field'] != '') ) {
-			/*$getposts_args['tax_query'][0]['taxonomy'] = $attr['taxonomy'];
-			$getposts_args['tax_query'][0]['terms'] = $attr['terms'];*/
 
 			$getposts_args['tax_query'] = array(
 		        array(
@@ -125,6 +128,13 @@
 		// Post Thumbnail
 		if ( has_post_thumbnail() ) {
 			$thumbnail = '<div class="post-thumb"><span class="center-helper"></span>' . get_the_post_thumbnail( $postid, 'large' ) . '</div>';
+		}
+
+		// Background Image
+		if ( (has_post_thumbnail()) && ($attr['bg_img'] != false ) ) {
+			$image_url = wp_get_attachment_image_src(get_post_thumbnail_id(),'full', true);
+			// Background image code. if undesired, Hash out $background_image
+			$background_image = 'background-image:url(\'' . $image_url[0] . '\');';
 		}
 
 		if ($attr['use_excerpt'] != '') {
@@ -197,11 +207,11 @@
 
 		//Render output
 		
-		$getpost_inner .= '<div class="getpost-wrapper'.$wrapperclass.'" style="position:relative;">';
+		$getpost_inner .= '<div class="getpost-wrapper'.$wrapperclass.'" style="position:relative;"><div class="getpost-innerwrap" style="'.$background_image.'">';
 		$getpost_inner .= $link_overlay;
 		$getpost_inner .= $content;
 		$getpost_inner .= $editlink;
-		$getpost_inner .= '<div class="clearfix"></div></div>';	
+		$getpost_inner .= '<div class="clearfix"></div></div></div>';	
 
 		}
 		
