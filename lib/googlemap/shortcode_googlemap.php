@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4googlemap
   Usage: [d4googlemap api_key="" address=""]
-  Version: 1.1.0
+  Version: 1.1.1
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -14,7 +14,7 @@ function shortcode_d4googlemap( $atts ) {
       'address'         =>'',
       'pins'            =>'',
       'locationtext'    =>'',
-      'click_activate'  =>'true',
+      'click_activate'  =>'false',
     ), $atts );
 
     if ($attr['address'] == '') {
