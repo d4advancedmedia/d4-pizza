@@ -5,7 +5,7 @@
 	GitHub Plugin URI: https://github.com/d4advancedmedia/d4-pizza
 	GitHub Branch: master
 	Description: The collection of D4 developer tools
-	Version: 2.2.2
+	Version: 2.2.3
 	Author: D4 Adv. Media
 	License: GPL3
 */

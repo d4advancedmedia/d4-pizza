@@ -9,9 +9,12 @@
 .d4-slidemenu.mobile-expand #content, .d4-slidemenu.mobile-expand #footer {
   right: 260px;
 }
-.d4-slidemenu #mobile-toggle, .d4-slidemenu #mobile-nav {
+
+/* Hide Skivvy Menu */
+#mobile-toggle, #mobile-nav {
   display: none !important;
 }
+
 .d4-slidemenu #d4slidemenu-toggle {
   background: transparent none repeat scroll 0 0;
   border-radius: 0;

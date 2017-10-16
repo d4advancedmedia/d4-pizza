@@ -3,7 +3,7 @@
 /*
   Feature Name: slidemenu
   Usage: Slide out mobile menu styling with accordion nesting for submenu items.
-  Version: 1.0.0
+  Version: 1.0.1
   Author: D4 Adv. Media
   License: GPL2
 */
