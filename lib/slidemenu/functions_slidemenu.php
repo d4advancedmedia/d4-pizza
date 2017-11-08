@@ -15,7 +15,7 @@ function add_d4slidemenu() {
 		'menu_id'         => 'd4slidemenu',
 		'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 		'theme_location'  => 'slidemenu',
-		'depth'           => 2,
+		'depth'           => 3,
 		'echo'            => true
 	));
 

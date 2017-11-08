@@ -13,7 +13,7 @@
 			'postid'			=>	'',
 			'pageid'			=>	'',
 			'wrapperclass'		=>	'',
-			'posttype'			=>	'',
+			'posttype'			=>	'post',
 			'title'				=>	'',
 			'category_name'		=>	'',
 			'number'			=>	'99',
@@ -84,13 +84,21 @@
 		        ),
 		    );
 		}
-		if ($attr['posttype'] != '') {
-			$posttype = $attr['posttype'];
-			$getposts_args['post_type'] = $posttype;
 
-			$posttype_obj = get_post_type_object( $posttype );
-			$posttype_name = $posttype_obj->labels->name;	
+		$posttype = $attr['posttype'];
+		$getposts_args['post_type'] = $posttype;
+
+		$posttype_obj = get_post_type_object( $posttype );
+
+		if ($posttype == 'post') {
+			$archive_link = get_permalink( get_option( 'page_for_posts' ) );
+		} else {
+			$archive_link = home_url().'/'.$posttype;
 		}
+		
+
+		$posttype_name = $posttype_obj->labels->name;	
+
 		if ($attr['author'] == 'true') {
 			$user_ID = get_current_user_id();
 			$getposts_args['author'] = $user_ID;
@@ -114,7 +122,7 @@
 
 
 		if ($attr['all_link'] == '') {
-			$alllink = '<div class="clearfix"></div><a class="get-all button" href="/'.$posttype.'">'.$all_linktext.'</a>';
+			$alllink = '<div class="clearfix"></div><a class="get-all button" href="'.$archive_link.'">'.$all_linktext.'</a>';
 		} elseif ( ($attr['all_link'] == 'term') || ($attr['all_link'] == 'category') ) {
 			$category_object = get_term_by( 'name', $category_name, $attr['all_link'] );
 			$alllink = '<div class="clearfix"></div><a class="get-all button" href="'.home_url().'/'.$category_object->slug.'">'.$all_linktext.'</a>';
@@ -172,7 +180,7 @@
 		}
 
 		if ($attr['link_overlay'] == true) {
-			$link_overlay = '<a style="position:absolute; top:0; bottom:0; left:0; right:0;z-index:99" href="'.$link_url.'"></a>';
+			$link_overlay = '<a style="position:absolute; top:0; bottom:0; left:0; right:0;z-index:999" href="'.$link_url.'"></a>';
 		} else {
 			$link_overlay = '';
 		}		

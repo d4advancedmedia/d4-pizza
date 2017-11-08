@@ -11,7 +11,7 @@
 }
 
 /* Hide Skivvy Menu */
-#mobile-toggle, #mobile-nav {
+#mobile-toggle, #mobile-nav, #d4slidemenu {
   display: none !important;
 }
 
@@ -37,6 +37,7 @@
   -webkit-tap-highlight-color: transparent;  /* i.e. Nexus5/Chrome and Kindle Fire HD 7 */
 }
 .d4-slidemenu #d4slidemenu {
+  display: block;
   background: #222 none repeat scroll 0 0;
   bottom: 0;
   margin: 0;
@@ -68,7 +69,7 @@
   background: rgba(255, 255, 255, 0.05) none repeat scroll 0 0;
 }
 .d4-slidemenu #d4slidemenu .menu-item-has-children a {
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .d4-slidemenu #d4slidemenu .menu-item-has-children.sub-menu-expanded a {
   pointer-events: auto;

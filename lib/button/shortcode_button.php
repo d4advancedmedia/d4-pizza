@@ -2,7 +2,7 @@
 /*
   Shortcode Name: d4button
   Usage: [d4button link="" text=""]
-  Version: 1.1.0
+  Version: 1.1.1
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -45,7 +45,7 @@
 		}
 
 		$output = '';
-		$output .= '<div class="button-wrap '.$class.'" style="display:inline-block"><a '.$link.' class="button"'.$target.'><i class="button-icon '.$icon.'">'.$icon_image.'</i>';
+		$output .= '<div class="button-wrap '.$class.'" style="display:inline-block"><a '.$link.' class="button '.$attr['class'].'"'.$target.'><i class="button-icon '.$icon.'">'.$icon_image.'</i>';
 		$output .= '<span class="button-text">'.$text.'</span>';
 		$output .= $subtext;
 		$output .= '</a></div>';
