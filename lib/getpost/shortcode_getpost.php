@@ -3,7 +3,7 @@
 /*
   Shortcode Name: d4getpost
   Usage: [d4getpost posttype="" orderby=""]
-  Version: 1.4.3
+  Version: 1.4.4
   Author: D4 Adv. Media
   License: GPL2
 */
@@ -179,7 +179,7 @@
 			$link_url = $attr['link'];
 		}
 
-		if ($attr['link_overlay'] == true) {
+		if ( ($attr['link_overlay'] == true) && ($attr['link'] != 'false') ){
 			$link_overlay = '<a style="position:absolute; top:0; bottom:0; left:0; right:0;z-index:999" href="'.$link_url.'"></a>';
 		} else {
 			$link_overlay = '';
